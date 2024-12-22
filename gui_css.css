@@ -1,3 +1,4 @@
+/* General Body Styling */
 body {
     margin: 0;
     padding: 0;
@@ -6,7 +7,10 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    color: white;
 }
+
+/* Taskbar */
 .taskbar {
     position: fixed;
     bottom: 0;
@@ -16,8 +20,11 @@ body {
     background: rgba(0, 0, 0, 0.8);
     display: flex;
     align-items: center;
-    color: white;
+    justify-content: space-between;
+    z-index: 1000;
+    padding: 0 10px;
 }
+
 .start-button {
     height: 100%;
     padding: 0 20px;
@@ -28,9 +35,12 @@ body {
     display: flex;
     align-items: center;
 }
+
 .start-button:hover {
     background: rgba(255, 255, 255, 0.2);
 }
+
+/* Start Menu */
 .start-menu {
     position: absolute;
     bottom: 50px;
@@ -41,7 +51,9 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2);
     display: none;
     padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
 .search-bar {
     width: 100%;
     padding: 5px;
@@ -50,9 +62,12 @@ body {
     border-radius: 3px;
     font-size: 16px;
 }
+
 .start-menu.visible {
     display: block;
 }
+
+/* Desktop and Icons */
 .desktop {
     position: relative;
     width: 100%;
@@ -62,23 +77,77 @@ body {
     align-content: flex-start;
     padding: 10px;
 }
+
 .icon {
     width: 80px;
     text-align: center;
     margin: 10px;
     cursor: pointer;
     position: absolute;
+    z-index: 10;
 }
+
 .icon img {
     width: 50px;
     height: 50px;
 }
+
+.icon:hover {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.browser-header button:hover {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+}
+
+.browser-header button:active {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.browser-header button:focus {
+    outline: none;
+}
+
+.browser-header {
+    background: #ddd;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+}
+
+span {
+    display: block;
+    margin-top: 5px;
+    color: black;
+    font-size: 14px;
+}
+
+p {
+    margin: 0;
+    color: black;
+    font-size: 14px;
+}
+
 .icon span {
     display: block;
     margin-top: 5px;
     color: white;
     font-size: 14px;
 }
+
+/* Dragging Effect */
+.icon.dragging {
+    opacity: 0.8;
+    z-index: 100;
+}
+
+/* Browser Window */
 .browser-window {
     position: fixed;
     top: 20%;
@@ -91,6 +160,7 @@ body {
     display: none;
     flex-direction: column;
 }
+
 .browser-header {
     background: #ddd;
     padding: 10px;
@@ -101,17 +171,20 @@ body {
     display: flex;
     justify-content: space-between;
 }
+
 .browser-header button {
     background: none;
     border: none;
     cursor: pointer;
     font-weight: bold;
 }
+
 .browser-content {
     flex: 1;
     overflow: auto;
     padding: 10px;
 }
+
 .search-bar-in-browser {
     width: calc(100% - 20px);
     padding: 5px;
@@ -120,11 +193,14 @@ body {
     border-radius: 3px;
     font-size: 16px;
 }
+
 iframe {
     width: 100%;
     height: 100%;
     border: none;
 }
+
+/* Context Menu */
 .context-menu {
     position: absolute;
     background: rgba(0, 0, 0, 0.9);
@@ -134,29 +210,56 @@ iframe {
     display: none;
     z-index: 1000;
 }
+
 .context-menu ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
+
 .context-menu ul li {
     padding: 5px 10px;
     cursor: pointer;
 }
+
 .context-menu ul li:hover {
     background: rgba(255, 255, 255, 0.2);
+}
+
+/* File Explorer */
+.file-explorer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    padding: 10px;
+}
+
+.file {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.file img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.file:hover {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+/* File Dragging */
+.file.dragging {
+    opacity: 0.7;
+    border: 1px dashed #ccc;
 }
 
 /* Ensure icons do not overlap */
 .icon {
     pointer-events: auto;
     z-index: 1;
-}
-.icon.dragging {
-    z-index: 100;
-}
-
-/* Browser specific styles */
-.browser-content iframe {
-    border: 1px solid #000;
 }

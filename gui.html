@@ -16,6 +16,10 @@
             <img src="https://cdn-icons-png.flaticon.com/512/906/906334.png" alt="JakkBrowser" onclick="openBrowser()">
             <span>JakkBrowser</span>
         </div>
+        <div class="icon" draggable="true" style="top: 190px; left: 10px;" ondragstart="startDrag(event)">
+            <img src="https://cdn-icons-png.flaticon.com/512/747/747564.png" alt="File Explorer" onclick="openFileExplorer()">
+            <span>파일 탐색기</span>
+        </div>
     </div>
 
     <div class="taskbar">
@@ -27,7 +31,7 @@
         <div>
             <p>Apps:</p>
             <ul>
-                <li>File Explorer</li>
+                <li onclick="openFileExplorer()">File Explorer</li>
                 <li>Settings</li>
                 <li>Terminal</li>
             </ul>
@@ -35,9 +39,43 @@
     </div>
 
     <div class="browser-window" id="recycle-bin">
-        <div class="browser-header">Recycle Bin</div>
+        <div class="browser-header" onmousedown="startMove(event, this.parentNode)">
+            휴지통
+            <div>
+                <button onclick="closeWindowById('recycle-bin')">X</button>
+            </div>
+        </div>
         <div class="browser-content">
-            <p>삭제된 파일 목록</p>
+            <p>삭제된 파일 목록이 비어있습니다.</p>
+        </div>
+    </div>
+
+    <div class="browser-window" id="file-explorer">
+        <div class="browser-header" onmousedown="startMove(event, this.parentNode)">
+            파일 탐색기
+            <div>
+                <button onclick="closeWindowById('file-explorer')">X</button>
+            </div>
+        </div>
+        <div class="browser-content">
+            <div id="file-container" class="file-explorer">
+                <div class="file">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3022/3022293.png" alt="Document">
+                    <span>Document.txt</span>
+                </div>
+                <div class="file">
+                    <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="Image">
+                    <span>Image.png</span>
+                </div>
+                <div class="file">
+                    <img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="Music">
+                    <span>Music.mp3</span>
+                </div>
+                <div class="file">
+                    <img src="https://cdn-icons-png.flaticon.com/512/727/727234.png" alt="Video">
+                    <span>Video.mp4</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -58,7 +96,6 @@
                 placeholder="Enter URL or Search" 
                 onkeydown="handleBrowserInput(event)"
             >
-            <p class="note">Note: Press Enter to load the site.</p>
             <iframe id="browser-iframe" sandbox="allow-same-origin allow-scripts allow-forms"></iframe>
         </div>             
     </div>

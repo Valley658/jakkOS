@@ -2,71 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JakkOS</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-            background-image: url('https://source.unsplash.com/random/1920x1080');
-            background-size: cover;
-            color: black;
-        }
-        .hidden {
-            display: none;
-        }
-        button {
-            margin: 10px;
-            padding: 15px 30px;
-            font-size: 18px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        button:hover {
-            background-color: #45a049;
-            transform: scale(1.05);
-        }
-        table {
-            margin: 0 auto;
-            border-collapse: collapse;
-            width: 80%;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        #title {
-            font-size: 48px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        #version {
-            font-size: 24px;
-        }
-        #language-selection h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: black;
-        }
-    </style>
+    <title>JakkOS Boot</title>
 </head>
 <body>
-    <h1 id="title">Welcome to JakkOS</h1>
-    <br>
-    <span style="font-size: 24px;">Version: <span id="version">1.1.0</span></span>
-    <div id="language-selection">
-        <h2>OS를 시작하시려면 아래 버튼을 클릭해주세요!</h2>
-        <button onclick="startos()">OS 실행하기</button>
+    <div id="boot-screen">
+        <div id="boot-logo">
+            <h1>JakkOS</h1>
+            <p>Version: <span id="version">2.2.6</span></p>
+        </div>
+        <div id="boot-status">
+            <p id="status-message">Initializing boot sequence...</p>
+            <p id="progress-percent">0%</p>
+        </div>
+        <div id="boot-loader">
+            <div class="loader-bar">
+                <div class="loader-fill"></div>
+            </div>
+        </div>
     </div>
-    <script src="script.js"></script>
+
+    <script src="index.js"></script>
 </body>
 </html>

@@ -177,3 +177,58 @@ const icons = document.querySelectorAll('.icon');
 icons.forEach((icon) => {
     icon.addEventListener('mouseup', () => preventIconOverlap(icon));
 });
+
+// Open Recycle Bin
+function openRecycleBin() {
+    const recycleBin = document.getElementById('recycle-bin');
+    recycleBin.style.display = 'flex';
+}
+
+// Open File Explorer
+function openFileExplorer() {
+    const fileExplorer = document.getElementById('file-explorer');
+    fileExplorer.style.display = 'flex';
+
+    // Populate with example files
+    const files = [
+        { name: 'Document.txt', icon: 'https://cdn-icons-png.flaticon.com/512/3022/3022293.png' },
+        { name: 'Image.png', icon: 'https://cdn-icons-png.flaticon.com/512/337/337946.png' },
+        { name: 'Music.mp3', icon: 'https://cdn-icons-png.flaticon.com/512/727/727245.png' },
+        { name: 'Video.mp4', icon: 'https://cdn-icons-png.flaticon.com/512/727/727234.png' },
+        { name: 'Presentation.pptx', icon: 'https://cdn-icons-png.flaticon.com/512/337/337946.png' },
+        { name: 'Spreadsheet.xlsx', icon: 'https://cdn-icons-png.flaticon.com/512/3022/3022250.png' },
+        { name: 'Code.js', icon: 'https://cdn-icons-png.flaticon.com/512/2306/2306114.png' }
+    ];
+
+    const fileContainer = document.getElementById('file-container');
+    fileContainer.innerHTML = '';
+
+    files.forEach(file => {
+        const fileElement = document.createElement('div');
+        fileElement.classList.add('file');
+        fileElement.innerHTML = `
+            <img src="${file.icon}" alt="${file.name}">
+            <span>${file.name}</span>
+        `;
+        fileContainer.appendChild(fileElement);
+    });
+
+    makeFilesDraggable();
+}
+
+// Enable dragging for files in File Explorer
+function makeFilesDraggable() {
+    const fileElements = document.querySelectorAll('.file');
+    fileElements.forEach(file => {
+        file.setAttribute('draggable', 'true');
+        file.addEventListener('dragstart', (event) => {
+            event.dataTransfer.setData('text/plain', file.querySelector('span').textContent);
+        });
+    });
+}
+
+// Close generic windows
+function closeWindowById(id) {
+    const windowElement = document.getElementById(id);
+    windowElement.style.display = 'none';
+}
