@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JakkOS</title>
+    <link rel="stylesheet" href="gui_css.css">
+</head>
+<body>
+    <div class="desktop" id="desktop">
+        <div class="icon" draggable="true" style="top: 10px; left: 10px;" ondragstart="startDrag(event)">
+            <img src="https://cdn-icons-png.flaticon.com/512/3097/3097994.png" alt="Recycle Bin" onclick="openRecycleBin()">
+            <span>휴지통</span>
+        </div>
+        <div class="icon" draggable="true" style="top: 100px; left: 10px;" ondragstart="startDrag(event)">
+            <img src="https://cdn-icons-png.flaticon.com/512/906/906334.png" alt="JakkBrowser" onclick="openBrowser()">
+            <span>JakkBrowser</span>
+        </div>
+    </div>
+
+    <div class="taskbar">
+        <button class="start-button" onclick="toggleStartMenu()">Start</button>
+    </div>
+
+    <div class="start-menu" id="start-menu">
+        <input type="text" placeholder="Search..." class="search-bar" id="search-bar">
+        <div>
+            <p>Apps:</p>
+            <ul>
+                <li>File Explorer</li>
+                <li>Settings</li>
+                <li>Terminal</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="browser-window" id="recycle-bin">
+        <div class="browser-header">Recycle Bin</div>
+        <div class="browser-content">
+            <p>삭제된 파일 목록</p>
+        </div>
+    </div>
+
+    <div class="browser-window" id="browser">
+        <div class="browser-header" onmousedown="startMove(event, this.parentNode)">
+            JakkBrowser
+            <div>
+                <button onclick="minimizeWindow('browser')">_</button>
+                <button onclick="maximizeWindow('browser')">[ ]</button>
+                <button onclick="closeWindow('browser')">X</button>
+            </div>
+        </div>
+        <div class="browser-content">
+            <input 
+                type="text" 
+                class="search-bar-in-browser" 
+                id="browser-url" 
+                placeholder="Enter URL or Search" 
+                onkeydown="handleBrowserInput(event)"
+            >
+            <p class="note">Note: Press Enter to load the site.</p>
+            <iframe id="browser-iframe" sandbox="allow-same-origin allow-scripts allow-forms"></iframe>
+        </div>             
+    </div>
+
+    <div class="context-menu" id="context-menu">
+        <ul>
+            <li onclick="alert('Display Settings')">Display Settings</li>
+            <li onclick="alert('Personalize')">Personalize</li>
+            <li onclick="alert('Refresh')">Refresh</li>
+        </ul>
+    </div>
+
+    <script src="gui_script.js"></script>
+</body>
+</html>
