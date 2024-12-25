@@ -1,5 +1,9 @@
 # jakkOS
 
-## It's Good OS?
+## What is JakkOS?
 
-**Not Good It's PlayOS~**
+**JakkOS is a web-based OS made for fun**
+
+**Click the link below to get to the site!**
+
+**https://valley658.github.io/jakkOS/**
