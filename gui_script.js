@@ -232,3 +232,40 @@ function closeWindowById(id) {
     const windowElement = document.getElementById(id);
     windowElement.style.display = 'none';
 }
+
+// Terminal functionality
+function handleTerminalInput(event) {
+    if (event.key === 'Enter') {
+        const input = document.getElementById('terminal-input').value;
+        const output = document.getElementById('terminal-output');
+        let response = '';
+
+        switch (input.toLowerCase()) {
+            case 'ls':
+            case 'dir':
+                response = 'Desktop Documents Downloads Music Pictures Videos';
+                break;
+            case 'pwd':
+                response = '/home/user';
+                break;
+            case 'whoami':
+                response = 'user';
+                break;
+            default:
+                response = `Command not found: ${input}`;
+        }
+
+        output.innerHTML += `<div>${input}</div><div>${response}</div>`;
+        document.getElementById('terminal-input').value = '';
+    }
+}
+
+// Update time and date
+function updateTimeAndDate() {
+    const now = new Date();
+    document.getElementById('current-time').textContent = now.toLocaleTimeString();
+    document.getElementById('current-date').textContent = now.toLocaleDateString();
+}
+
+setInterval(updateTimeAndDate, 1000);
+updateTimeAndDate();
